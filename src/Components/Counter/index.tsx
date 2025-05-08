@@ -2,6 +2,8 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { useEffect, useState } from "react";
 
+import styles from "./counter.module.css";
+
 dayjs.extend(duration);
 
 type CounterProps = {
@@ -26,5 +28,10 @@ export default function Counter({ sinceDate }: CounterProps) {
     return () => clearInterval(interval);
   }, [sinceDate]);
 
-  return <div>{`Time spent on the bench: ${timeSince}`}</div>;
+  return (
+    <div className={styles.container}>
+      <h1>Time spent sittin' around</h1>
+      <h3>{timeSince}</h3>
+    </div>
+  );
 }
